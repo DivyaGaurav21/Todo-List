@@ -6,7 +6,13 @@ const app = express();
 app.use('/' , require('./routers/index'))
 
 
+//setting view engine as ejs
+app.set('view engine','ejs');
+//setting path for views directory
+app.set('views','./views');
 
+//static file , which is present in assets directory
+app.use(express.static('assets'));
 
 
 app.listen(port , (err) => {
