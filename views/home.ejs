@@ -18,7 +18,7 @@
       <section id="app_ui">
 
       <!-- form to add new task  -->
-      <form action="" method="">
+      <form action="/action/create-task" method="POST">
              <!-- Div for description input -->
              <div id="desc-div">
                 <label for="desc-input">Create your ToDo description : <i class="fa-brands fa-apple"></i></label>
@@ -70,7 +70,29 @@
 
       <!-- 2nd section of ui  -->
    <section id="db-storage">
-    
+
+    <form action="/action/delete-tasks" method="post" id="tasks-list-form">
+        <% for(let i of todoList){%>
+            <div class="db-todo-container">
+                <div class="task">
+                    <input id="check" type="checkbox" name="id" value="<%= i.id %>" >
+                </div>
+                <div class="task-data">
+                    <p> <%= i.description %> </p>
+                </div>
+                    <div class="db_date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span> <%= i.date %> </span>
+                   </div>
+                <div class="btn">
+                    <button type="button" style="background-color :<%= color_list[i.category] %>"><%= i.category %>
+                         </button>
+                </div>
+              
+            </div>
+        <%}%>
+    </form>
+
    </section>
 
 </body>
