@@ -43,7 +43,7 @@
             <div id="date-div" class="choose">
                 <div>
                     <label for="date" class="cateogary">Date: <i class="fa-solid fa-calendar-days"></i></label>
-                    <input type="date" id="date" name="date">
+                    <input type="date" id="date" name="date" required>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
       <!-- 2nd section of ui  -->
    <section id="db-storage">
 
-    <form action="/action/delete-tasks" method="post" id="tasks-list-form">
+    <form action="/action/delete-task" method="post" id="tasks-list-form">
         <% for(let i of todoList){%>
             <div class="db-todo-container">
                 <div class="task">
