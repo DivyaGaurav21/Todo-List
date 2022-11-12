@@ -5,7 +5,7 @@ const Task = require('../models/todo_list')
 
 
 module.exports.create = (req ,res) =>{
-    console.log(req.body);
+    // console.log(req.body);
     Task.create({
         description : req.body.description ,
         category : req.body.category ,
@@ -22,13 +22,15 @@ module.exports.create = (req ,res) =>{
 // controller for deleting item for  todo list  
 
 module.exports.delete = (req, res) => {
+    // console.log(req.body.id , "in main")
     // If user haven't selected any task to delete
     if(req.body.id == undefined){
         console.log("User haven't selected any task to delete");
         return res.redirect('back');
     }
-    //  If multiple tasks are to be deleted
+    //  If only one tasks are to be deleted
  else if(typeof(req.body.id) == 'string'){
+    // console.log(req.body , " single selection")
         Task.findByIdAndDelete(req.body.id, function(err){
                 if(err){
                     console.log("error deleting task ");
@@ -37,9 +39,9 @@ module.exports.delete = (req, res) => {
                 return res.redirect('back');
             });
     }
-    // If only one task is to be deleted
+    // multiple task is to be deleted by else function
     else{
-        for(let i of req.body.id){
+        for(let i of req.body.id){    // console.log(i , "in multiple") 
             Task.findByIdAndDelete(i, function(err){
                 if(err){
                     console.log("error deleting tasks ");
